@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Daily Expense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#0a0a0a] font-[Poppins]">
+    <!-- Navbar -->
+    <nav class="bg-[#dc3545] shadow-sm fixed w-full z-10">
+        <div class="max-w-screen-lg mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Back Button -->
+                <a href="#" class="text-white hover:text-red-100 transition-colors">
+                    <i class="fas fa-chevron-left h-6 w-6"></i>
+                </a>
+                <!-- Title -->
+                <h1 class="text-lg font-semibold text-white">Add Daily Expense</h1>
+                <div class="w-6 h-6"></div> <!-- Spacer -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="p-8 pt-20">
+        <!-- Date Section -->
+        <div class="bg-[#1e1e1e] rounded-lg shadow-sm p-6 mb-6 border border-gray-50">
+            <h2 id="date" class="text-lg font-semibold text-white"></h2>
+        </div>
+
+        <!-- Input Sections -->
+        <div class="bg-[#1e1e1e] rounded-lg shadow-sm p-6 mb-8 border border-gray-50">
+            <!-- Amount Input -->
+            <div class="mb-6">
+                <label class="block text-white font-medium mb-2">Amount</label>
+                <div class="relative">
+                    <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800">₹</span>
+                    <input type="number" id="amount" 
+                           class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#dc3545] bg-white text-gray-900"
+                           placeholder="Enter amount">
+                </div>
+            </div>
+
+            <!-- Description Input -->
+            <div class="mb-8">
+                <label class="block text-white font-medium mb-2">Description</label>
+                <textarea id="description" 
+                          class="w-full pt-2 pb-1 pr-4 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#dc3545] bg-white text-gray-900"
+                          rows="4" placeholder="Enter description"></textarea>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-end space-x-4">
+                <button id="saveBtn" class="flex items-center space-x-2 bg-[#dc3545] text-white px-4 py-2 rounded-md hover:bg-[#bb2d3b] transition-colors">
+                    <i class="fas fa-save h-5 w-5"></i>
+                    <span>Save</span>
+                </button>
+                <button id="submitBtn" class="flex items-center space-x-2 bg-[#dc3545] text-white px-4 py-2 rounded-md hover:bg-[#bb2d3b] transition-colors">
+                    <i class="fas fa-plus h-5 w-5"></i>
+                    <span>Submit</span>
+                </button>
+            </div>
+        </div>
+    <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-[#0a0a0a] shadow-lg">
+            <div class="max-w-screen-lg mx-auto px-4">
+                <div class="flex justify-around items-center h-16">
+                    <button class="nav-active flex flex-col items-center space-y-2">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <span class="text-xs font-medium text-gray-400">Home</span>
+                    </button>
+                    <button class="not-nav-active flex flex-col items-center space-y-2">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        <span class="text-xs text-gray-400">Assign Order List</span>
+                    </button>
+                    <button class="not-nav-active flex flex-col items-center space-y-2">
+                        <svg class="w-6 h-6 text-[#dc3545]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08.402-2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <a href="daily_expense.html" class="text-xs text-[#dc3545]">Daily Expense List</a>
+                    </button>
+                    <button class="not-nav-active flex flex-col items-center space-y-2">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c1.543.94 3.31-.826 2.37-2.37a1.724 1.724 0 00-1.065-2.572c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-.94-1.543-.826-3.31-2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="text-xs text-gray-400">Settings</span>
+                    </button>
+                </div>
+            </div>
+        </nav>  
+    </main>
+
+    <script>
+        // Set today's date
+        const dateElement = document.getElementById('date');
+        const currentDate = new Date();
+        const dateString = currentDate.getDate().toString().padStart(2, '0') + '-' + 
+                          (currentDate.getMonth() + 1).toString().padStart(2, '0') + '-' + 
+                          currentDate.getFullYear();
+        dateElement.textContent = `Today date: ${dateString}`;
+
+        // Handle submit button
+        const submitBtn = document.getElementById('submitBtn');
+        let isSubmittedToday = false;
+
+        submitBtn.addEventListener('click', () => {
+            if (isSubmittedToday) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Data can be added only once. To make any changes, contact admin.',
+                    icon: 'error'
+                });
+                return;
+            }
+
+            console.log('Submitting daily expense...');
+            
+            isSubmittedToday = true;
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('bg-[#dc3545]', 'hover:bg-[#bb2d3b]');
+            submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+        });
+
+        // Initialize submission state from localStorage
+        if (localStorage.getItem('lastSubmitDate') === dateString) {
+            isSubmittedToday = true;
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('bg-[#dc3545]', 'hover:bg-[#bb2d3b]');
+            submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+        } else {
+            isSubmittedToday = false;
+            submitBtn.disabled = false;
+            submitBtn.classList.add('bg-[#dc3545]', 'hover:bg-[#bb2d3b]');
+        }
+
+        // Update localStorage when submitting
+        submitBtn.addEventListener('click', () => {
+            if (!isSubmittedToday) {
+                localStorage.setItem('lastSubmitDate', dateString);
+            }
+        });
+    </script>
+</body>
+</html>

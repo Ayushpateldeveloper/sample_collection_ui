@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigned Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-[Poppins]">
+    <!-- Main Container -->
+    <div class="min-h-screen bg-gray-50">
+        <!-- Navbar -->
+        <nav class="bg-[#dc3545] text-white p-4 fixed w-full top-0 z-10">
+            <div class="flex items-center justify-between">
+                <a href="dashboard_01.html" class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </a>
+                <div class="flex-grow text-center">
+                    <h1 class="text-lg font-semibold">Assigned Orders</h1>
+                </div>
+                <div></div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-16 pb-16">
+            <div class="overflow-y-auto">
+                <!-- Filter Section -->
+                <div class="p-4">
+                    <div class="relative inline-block">
+                        <button 
+                            id="filterButton"
+                            class="w-48 px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 transition-all duration-300 ease-in-out"
+                            onclick="toggleFilter()"
+                        >
+                            <div class="flex justify-between items-center">
+                                <span>Filter by Status</span>
+                                <svg 
+                                    class="h-4 w-4 text-gray-500" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </button>
+                        
+                        <div 
+                            id="filterOptions" 
+                            class="absolute hidden w-48 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+                            style="min-width: 150px;"
+                        >
+                            <div class="flex flex-col">
+                                <button 
+                                    class="px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                                    onclick="updateFilter('pending')"
+                                >
+                                    Pending
+                                </button>
+                                <button 
+                                    class="px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                                    onclick="updateFilter('completed')"
+                                >
+                                    Completed
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Cards -->
+                <div class="p-4 space-y-4" id="orderCards">
+                    <!-- Card 1 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: ABC Inc.</h2>
+                                    <p class="text-gray-600">Area: Fatgung</p>
+                                    <p class="text-gray-600">Scheduled on: 24-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456870</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: DEF Corp.</h2>
+                                    <p class="text-gray-600">Area: Cikupa</p>
+                                    <p class="text-gray-600">Scheduled on: 25-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456871</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: GHI Ltd.</h2>
+                                    <p class="text-gray-600">Area: Cibinong</p>
+                                    <p class="text-gray-600">Scheduled on: 26-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456872</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: JKL Inc.</h2>
+                                    <p class="text-gray-600">Area: Cikarang</p>
+                                    <p class="text-gray-600">Scheduled on: 27-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456873</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 5 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: MNO Corp.</h2>
+                                    <p class="text-gray-600">Area: Bekasi</p>
+                                    <p class="text-gray-600">Scheduled on: 28-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456874</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 6 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: PQR Ltd.</h2>
+                                    <p class="text-gray-600">Area: Karawang</p>
+                                    <p class="text-gray-600">Scheduled on: 29-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456875</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 7 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: STU Inc.</h2>
+                                    <p class="text-gray-600">Area: Subang</p>
+                                    <p class="text-gray-600">Scheduled on: 30-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456876</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 8 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: VWX Corp.</h2>
+                                    <p class="text-gray-600">Area: Purwakarta</p>
+                                    <p class="text-gray-600">Scheduled on: 31-03-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456877</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 9 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: YZ Corp.</h2>
+                                    <p class="text-gray-600">Area: Bandung</p>
+                                    <p class="text-gray-600">Scheduled on: 01-04-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456878</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                        Completed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 10 -->
+                    <a href="order_details.html" class="block">
+                        <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="font-semibold text-gray-800">Client Name: ABC Corp.</h2>
+                                    <p class="text-gray-600">Area: Jakarta</p>
+                                    <p class="text-gray-600">Scheduled on: 02-04-2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600">Contact Number:</p>
+                                    <p class="font-semibold text-gray-800">123456879</p>
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                        Pending
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+      <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
+        <div class="max-w-screen-lg mx-auto px-4">
+            <div class="flex justify-around items-center h-16">
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <a href="dashboard_01.html" class="text-xs font-medium text-gray-500">Home</a>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-[#dc3545]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <span class="text-xs font-medium text-[#dc3545]">Assign Order List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08.402-2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-xs text-gray-500">Daily Expense List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-xs text-gray-500">Settings</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    </div>
+
+    <script>
+        let currentFilter = 'all';
+
+        function toggleFilter() {
+            const filterOptions = document.getElementById('filterOptions');
+            filterOptions.classList.toggle('hidden');
+        }
+
+        function updateFilter(value) {
+            currentFilter = value;
+            const filterButton = document.getElementById('filterButton');
+            filterButton.querySelector('span:first-child').textContent = value.charAt(0).toUpperCase() + value.slice(1);
+            document.getElementById('filterOptions').classList.add('hidden');
+            
+            const cards = document.querySelectorAll('#orderCards > a > div');
+            cards.forEach(card => {
+                const status = card.querySelector('.bg-red-100, .bg-green-100');
+                if (status) {
+                    const isPending = status.classList.contains('bg-red-100');
+                    const isCompleted = status.classList.contains('bg-green-100');
+
+                    if (currentFilter === 'pending') {
+                        card.style.display = isPending ? 'block' : 'none';
+                    } else if (currentFilter === 'completed') {
+                        card.style.display = isCompleted ? 'block' : 'none';
+                    } else {
+                        card.style.display = 'block';
+                    }
+                }
+            });
+        }
+
+        // Close filter when clicking outside
+        document.addEventListener('click', function(event) {
+            const filterButton = document.getElementById('filterButton');
+            const filterOptions = document.getElementById('filterOptions');
+            if (!filterButton.contains(event.target) && !filterOptions.contains(event.target)) {
+                filterOptions.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

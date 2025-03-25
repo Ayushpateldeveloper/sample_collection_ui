@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head content as before -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@heroicons/v2.0.18/24/outline/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .card-shadow { box-shadow: 0 4px 6px rgba(0,0,0,0.4); }
+        .nav-active { color: #dc3545; }
+        .payment-details { display: none; }
+        .drop-zone { border: 2px dashed #cbd5e0; transition: border-color 0.2s; }
+        .drop-zone:hover { border-color: #dc3545; }
+        .attachment-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; margin: 0.5rem 0; background: #1a1a1a; border-radius: 0.375rem; }
+        .remove-btn { cursor: pointer; padding: 0.25rem; transition: color 0.2s; }
+        .remove-btn:hover { color: #dc3545; }
+        .custom-radio:checked { background-color: #dc3545; }
+        .custom-radio:checked + label { color: #dc3545; }
+        select option:hover {
+            background-color: #dc3545 !important;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] font-Poppins text-gray-200">
+    <!-- Navbar -->
+    <nav class="bg-[#dc3545] p-4 fixed w-full z-10">
+        <div class="flex items-center justify-between">
+            <!-- Back Arrow -->
+            <a href="assigned_order.html" class="text-white hover:text-gray-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <h1 class="text-white text-lg font-semibold">Order Details</h1>
+            <div class="w-6 h-6 opacity-0"></div> <!-- Keeps center alignment -->
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="p-8 pt-20">
+        <!-- Order Information -->
+        <div class="bg-[#111111] rounded-xl shadow-sm p-6 mb-6 card-shadow">
+            <div class="space-y-4">
+                <div>
+                    <label class="text-gray-400 font-medium">Order ID:</label>
+                    <span class="block text-gray-300">IN12DFCE56</span>
+                </div>
+                <div>
+                    <label class="text-gray-400 font-medium">Client:</label>
+                    <span class="block text-gray-300">ABC Inc.</span>
+                </div>
+                <div>
+                    <label class="text-gray-400 font-medium">Contact:</label>
+                    <span class="block text-gray-300">7894561230</span>
+                </div>
+                <div>
+                    <label class="text-gray-400 font-medium">Scheduled:</label>
+                    <span class="block text-gray-300">23-03-2025</span>
+                </div>
+                <div>
+                    <label class="text-gray-400 font-medium">Status:</label>
+                    <span class="inline-block bg-[#dc3545]/30 text-[#dc3545] text-sm font-medium px-3 py-1 rounded-full">
+                        Pending
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Details -->
+        <div class="bg-[#111111] rounded-xl shadow-sm p-4 mx-2 mb-6">
+            <div class="space-y-3">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Order ID:</span>
+                    <span class="text-gray-300">IN12DFCE56</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Client:</span>
+                    <span class="text-gray-300">ABC Inc.</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Contact:</span>
+                    <span class="text-gray-300">7894561230</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Scheduled on:</span>
+                    <span class="text-gray-300">2024-09-16</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Pickup on:</span>
+                    <span class="text-gray-300">2024-09-23 10:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Input Section -->
+        <div class="bg-[#111111] rounded-xl shadow-sm p-4 mx-2 mb-6">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-400 mb-2">Remarks/Notes</label>
+                    <textarea class="w-full p-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc3545]" rows="3" style="background-color: #1a1a1a; color: white;"></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-gray-400">Payment Collected</label>
+                    <div class="flex justify-start space-x-4">
+                        <div class="flex items-center">
+                            <input type="radio" id="yes" name="payment" class="h-4 w-4 text-[#dc3545] custom-radio" checked>
+                            <label for="yes" class="ml-2 text-gray-300">Yes</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="no" name="payment" class="h-4 w-4 text-[#dc3545] custom-radio">
+                            <label for="no" class="ml-2 text-gray-300">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="paymentDetails" class="payment-details space-y-4 p-4 rounded-lg" style="background-color: #1a1a1a;">
+                    <div>
+                        <label class="block text-gray-400 mb-2">Payment Method</label>
+                        <select class="w-full p-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc3545]" style="background-color: #111111; color: white;">
+                            <option value="">Select Method</option>
+                            <option value="cash">Cash</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-2">Amount Received</label>
+                        <input type="number" class="w-full p-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dc3545]" placeholder="Enter amount" style="background-color: #1a1a1a; color: white;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attachments Section -->
+        <div class="bg-[#111111] rounded-xl shadow-sm p-4 mx-2 mb-6">
+            <div class="space-y-4">
+                <div class="drop-zone border-2 border-dashed border-gray-600 rounded-lg p-4 text-center hover:border-[#dc3545] transition-all cursor-pointer">
+                    <div class="flex flex-col items-center space-y-2">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        <p class="text-gray-400">Drop files here or click to upload</p>
+                    </div>
+                </div>
+                <input type="file" id="fileInput" class="hidden" multiple accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" max="3">
+                <div id="attachmentsList" class="space-y-2">
+                    <div class="attachment-item">
+                        <span class="text-gray-400">document1.pdf</span>
+                        <button class="remove-btn" onclick="removeFile(this)">
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="attachment-item">
+                        <span class="text-gray-400">image1.jpg</span>
+                        <button class="remove-btn" onclick="removeFile(this)">
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">Maximum 3 files allowed</p>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div id="saveButton" class="mx-2 mt-8 mb-14 bg-[#dc3545] text-white rounded-lg p-3 shadow-md hover:bg-[#bb2d3b] transition-colors flex items-center justify-center gap-2" onclick="saveData()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            <span class="text-sm font-medium">Save Changes</span>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0a0a0a] shadow-lg">
+        <div class="max-w-screen-lg mx-auto px-4">
+            <div class="flex justify-around items-center h-16">
+                <button class="nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-[#dc3545]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-xs font-medium text-[#dc3545]">Home</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    <span class="text-xs text-gray-400">Assign Order List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08.402-2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-xs text-gray-400">Daily Expense List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span class="text-xs text-gray-400">Settings</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+  <script>
+    // Handle payment radio buttons without toggling the save button visibility
+    document.addEventListener('change', function(e) {
+      if (e.target.name === 'payment') {
+        const paymentDetails = document.getElementById('paymentDetails');
+        if (e.target.id === 'yes') {
+          paymentDetails.classList.remove('payment-details');
+        } else {
+          paymentDetails.classList.add('payment-details');
+        }
+      }
+    });
+
+    // Handle file upload
+    const dropZone = document.querySelector('.drop-zone');
+    const fileInput = document.getElementById('fileInput');
+    const attachmentsList = document.getElementById('attachmentsList');
+
+    dropZone.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function(e) {
+      const files = this.files;
+      const maxFiles = 3;
+
+      if (files.length > maxFiles) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Maximum 3 files allowed',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.value = '';
+        return;
+      }
+
+      // Add new files
+      Array.from(files).forEach(file => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'attachment-item';
+        fileItem.innerHTML = `
+          <span class="text-gray-600">${file.name}</span>
+          <button class="remove-btn" onclick="removeFile(this)">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        `;
+        attachmentsList.appendChild(fileItem);
+      });
+    });
+
+    // Remove file without affecting save button visibility
+    function removeFile(btn) {
+      btn.parentElement.remove();
+    }
+
+    function saveData() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Data saved successfully',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  </script>
+</body>
+</html>

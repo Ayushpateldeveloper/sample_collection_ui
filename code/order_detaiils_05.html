@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-[#dc3545] shadow-lg">
+        <div class="max-w-screen-lg mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-white hover:text-gray-200">
+                        <i class="fas fa-chevron-left text-xl"></i>
+                    </a>
+                </div>
+                <div class="flex-1 text-center">
+                    <h2 class="text-white text-xl font-medium">Order Details</h2>
+                </div>
+                <!-- Removed notification bell -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-screen-lg mx-auto p-4">
+        <!-- Order Summary Card -->
+        <div class="bg-white rounded-lg shadow-xl p-6 mb-6">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-id-badge text-[#dc3545] text-xl mr-3"></i>
+                <h3 class="font-medium text-gray-800">Order ID: 
+                    <span class="bg-red-100/50 text-red-500 px-2 py-1 rounded">#135sdv5</span>
+                </h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-user text-[#dc3545] text-xl mr-3"></i>
+                        <div>
+                            <h3 class="font-medium text-gray-800">Client</h3>
+                            <p class="text-gray-600">Abc Inc.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-phone text-[#dc3545] text-xl mr-3"></i>
+                        <div>
+                            <h3 class="font-medium text-gray-800">Contact</h3>
+                            <p class="text-gray-600">789-465-1230</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar text-[#dc3545] text-xl mr-3"></i>
+                        <div>
+                            <h3 class="font-medium text-gray-800">Schedule Date</h3>
+                            <p class="text-gray-600">October 15, 2023</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-truck text-[#dc3545] text-xl mr-3"></i>
+                        <div>
+                            <h3 class="font-medium text-gray-800">Pickup Date</h3>
+                            <p class="text-gray-600">October 20, 2023 10:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t pt-4 mt-4">
+                <div class="flex items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-[#dc3545] text-xl mr-3"></i>
+                        <span class="text-[#dc3545] font-medium">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attachments Section -->
+        <div class="bg-white rounded-lg shadow-xl p-6">
+            <div class="flex items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Attachments</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                        <span class="text-gray-600">document.pdf</span>
+                    </div>
+                    <button 
+                        class="download-btn bg-[#dc3545] text-white px-3 py-1.5 rounded-lg hover:bg-[#bb2d3b] transition-all duration-300 flex items-center justify-center gap-1.5 w-32 md:w-full shadow-md hover:shadow-lg text-xs md:text-sm"
+                    >
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-image text-blue-500 text-xl mr-3"></i>
+                        <span class="text-gray-600">project-image1.jpg</span>
+                    </div>
+                    <button 
+                        class="download-btn bg-[#dc3545] text-white px-3 py-1.5 rounded-lg hover:bg-[#bb2d3b] transition-all duration-300 flex items-center justify-center gap-1.5 w-32 md:w-full shadow-md hover:shadow-lg text-xs md:text-sm"
+                    >
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-image text-green-500 text-xl mr-3"></i>
+                        <span class="text-gray-600">project-image2.jpg</span>
+                    </div>
+                    <button 
+                        class="download-btn bg-[#dc3545] text-white px-3 py-1.5 rounded-lg hover:bg-[#bb2d3b] transition-all duration-300 flex items-center justify-center gap-1.5 w-32 md:w-full shadow-md hover:shadow-lg text-xs md:text-sm"
+                    >
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Alert -->
+    <div id="downloadAlert" class="fixed bottom-0 left-0 mb-4 ml-4 hidden max-w-xs">
+        <div class="bg-[#dc3545] text-white px-4 py-2 rounded-lg shadow-lg flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>Download complete</span>
+            <div class="ml-4 w-24">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progressBar" class="bg-[#dc3545] h-2 rounded-full shadow-sm"></div>
+                </div>
+            </div>
+            <button onclick="document.getElementById('downloadAlert').classList.add('hidden')" class="ml-4 text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bg-white border-t shadow-lg fixed bottom-0 w-full">
+        <div class="flex justify-around items-center h-16">
+            <a href="#" class="text-gray-600 hover:text-[#dc3545] flex flex-col items-center">
+                <i class="fas fa-home text-xl mb-1"></i> Home
+            </a>
+            <a href="#" class="text-gray-600 hover:text-[#dc3545] flex flex-col items-center">
+                <i class="fas fa-file text-xl mb-1"></i> Orders
+            </a>
+            <a href="#" class="text-gray-600 hover:text-[#dc3545] flex flex-col items-center">
+                <i class="fas fa-user text-xl mb-1"></i> Profile
+            </a>
+            <a href="#" class="text-gray-600 hover:text-[#dc3545] flex flex-col items-center">
+                <i class="fas fa-cog text-xl mb-1"></i> Settings
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const alert = document.getElementById('downloadAlert');
+                const progressBar = document.getElementById('progressBar');
+                
+                alert.classList.remove('hidden');
+                
+                let width = 0;
+                const interval = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            alert.classList.add('hidden');
+                        }, 500);
+                    } else {
+                        width++;
+                        progressBar.style.width = width + '%';
+                    }
+                }, 20);
+            });
+        });
+    </script>
+</body>
+</html>

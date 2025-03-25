@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@heroicons/v2.0.18/24/outline/index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-[Poppins]">
+    <!-- Navbar -->
+    <nav class="bg-[#dc3545] p-4 fixed w-full z-10 shadow-sm">
+        <div class="flex items-center justify-between">
+            <!-- Back Arrow -->
+            <a href="order_details.html" class="text-white hover:text-gray-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" 
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <h1 class="text-white text-lg font-semibold">Reschedule Order</h1>
+            <div class="w-6 h-6 opacity-0"></div> <!-- Keeps center alignment -->
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="p-8 pt-20">
+        <!-- Order Information -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="space-y-4">
+                <div>
+                    <label class="text-gray-800 font-medium">Order ID:</label>
+                    <span class="block text-gray-600 mt-2">IN12DFCE56</span>
+                </div>
+                <div>
+                    <label class="text-gray-800 font-medium">Client:</label>
+                    <span class="block text-gray-600 mt-2">ABC Inc.</span>
+                </div>
+                <div>
+                    <label class="text-gray-800 font-medium">Contact:</label>
+                    <span class="block text-gray-600 mt-2">7894561230</span>
+                </div>
+                <div>
+                    <label class="text-gray-800 font-medium">Scheduled:</label>
+                    <span class="block text-gray-600 mt-2">23-03-2025</span>
+                </div>
+                <div>
+                    <label class="text-gray-800 font-medium">Status:</label>
+                    <span class="inline-block bg-[#dc3545] text-white text-sm font-medium px-3 py-1 ml-2 rounded-full">
+                        Pending
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="bg-red-50 border-l-4 border-[#dc3545] rounded-lg p-6 mb-8 shadow-sm">
+            <div class="flex items-center mb-4">
+                <svg class="w-5 h-5 text-[#dc3545] mr-2" fill="none" stroke="currentColor" 
+                     viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                          d="M13 16h-1v-4h-1m1-4h.01M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z" />
+                </svg>
+                <h2 class="text-lg font-semibold text-[#dc3545]">Notes</h2>
+            </div>
+            <p class="text-gray-800">
+                Sample notes go here. This is a detailed description of the order requirements and any special instructions.
+            </p>
+        </div>
+
+        <!-- Reason Dropdown Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <div class="space-y-4">
+              <div x-data="dropdown()" @keydown.window="keydown($event)" class="relative inline-block w-full">
+  <label class="block text-gray-800 font-medium mb-1">Reason for Status Change:</label>
+  <!-- Button acting as the select -->
+  <button @click="toggle()"
+          type="button"
+          class="w-full text-left p-2 border rounded-md shadow-sm border-gray-300 outline-red-500"
+          :aria-expanded="open"
+          aria-haspopup="listbox">
+      <span x-text="selectedText"></span>
+  </button>
+  <!-- Dropdown options -->
+  <ul x-show="open" x-transition class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 overflow-auto text-base border border-gray-300">
+    <template x-for="(option, index) in options" :key="index">
+      <li @click="select(index)"
+          @mouseenter="hovered = index"
+          :class="{'bg-red-50': hovered === index}"
+          class="cursor-pointer select-none relative py-2 pl-3 pr-9">
+        <span x-text="option.text" 
+              :class="{'font-semibold': selected === index, 'font-normal': selected !== index}"></span>
+      </li>
+    </template>
+  </ul>
+</div>
+                
+                <!-- Save Button -->
+                <div class="mt-6">
+                    <button class="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
+        <div class="max-w-screen-lg mx-auto px-4">
+            <div class="flex justify-around items-center h-16">
+                <button class="nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span class="text-xs font-medium text-red-500">Home</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <span class="text-xs text-gray-400">Assign Order List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08.402-2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-xs text-gray-400">Daily Expense List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-xs text-gray-400">Settings</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    </main>
+
+    <!-- AlpineJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script>
+function dropdown() {
+    return {
+        open: false,
+        options: [
+            { value: '', text: 'Select Reason' },
+            { value: 'customer_denied', text: 'Customer Denied' },
+            { value: 'area_far', text: 'Area Far From Me' },
+            { value: 'vehicle_overloaded', text: 'Vehicle Overloaded' },
+            { value: 'personal_reason', text: 'Can Not Collect For Personal Reason' }
+        ],
+        selected: 0,
+        hovered: 0,
+        get selectedText() {
+            return this.options[this.selected].text;
+        },
+        toggle() {
+            this.open = !this.open;
+        },
+        select(index) {
+            this.selected = index;
+            this.hovered = index;
+            this.open = false;
+        },
+        keydown(e) {
+            // Only act if the dropdown is open
+            if (!this.open) return;
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (this.hovered < this.options.length - 1) {
+                    this.hovered++;
+                }
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (this.hovered > 0) {
+                    this.hovered--;
+                }
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                this.select(this.hovered);
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>

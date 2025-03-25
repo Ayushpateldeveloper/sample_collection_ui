@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Details</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Custom styles -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navbar (Top) -->
+  <nav class="bg-[#dc3545] shadow-sm fixed top-0 w-full z-10">
+    <div class="max-w-screen-sm mx-auto flex items-center justify-between p-4">
+      <!-- Left chevron icon -->
+      <a href="#" class="text-white">
+        <i class="fas fa-chevron-left text-xl"></i>
+      </a>
+      <!-- Center title -->
+      <h1 class="text-xl font-semibold text-white">Profile Details</h1>
+      <!-- Placeholder for spacing -->
+      <div class="w-6"></div>
+    </div>
+  </nav>
+
+  <!-- Body Section -->
+  <main class="pt-20 pb-24 px-4">
+    <div class="max-w-screen-sm mx-auto">
+      <!-- Profile Details Card -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <!-- Profile detail item -->
+        <div class="mb-4">
+          <span class="block text-sm font-medium text-[#dc3545]">Name:</span>
+          <span class="block text-gray-800 text-base mt-2">Ayush Patel</span>
+        </div>
+        <hr class="border-t border-gray-200 my-2" />
+        <div class="mb-4">
+          <span class="block text-sm font-medium text-[#dc3545]">Email:</span>
+          <span class="block text-gray-800 text-base mt-2">abc@gmail.com</span>
+        </div>
+        <hr class="border-t border-gray-200 my-2" />
+        <div>
+          <span class="block text-sm font-medium text-[#dc3545]">Mobile:</span>
+          <span class="block text-gray-800 text-base mt-2">91-7990116127</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
+        <div class="max-w-screen-lg mx-auto px-4">
+            <div class="flex justify-around items-center h-16">
+                <button class="nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span class="text-xs font-medium text-red-500">Home</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <span class="text-xs text-gray-400">Assign Order List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08.402-2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-xs text-gray-400">Daily Expense List</span>
+                </button>
+                <button class="not-nav-active flex flex-col items-center space-y-2">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-xs text-gray-400">Settings</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Optional JavaScript (if needed for interactions) -->
+  <script>
+    // Example: You can add interactivity here if needed.
+  </script>
+</body>
+</html>
